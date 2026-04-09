@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from pathlib import Path
 
 from .models import ReviewRequest
@@ -41,7 +42,16 @@ def main() -> int:
         provider_name=args.provider,
     )
     artifacts = ReviewPipeline(request).run()
+    counts = Counter(item.severity for item in artifacts.findings)
 
+    print(f"Analyzed file: {args.source}")
+    print(f"Detected findings: {len(artifacts.findings)}")
+    print(
+        "Severity breakdown: "
+        f"high={counts.get('high', 0)}, "
+        f"medium={counts.get('medium', 0)}, "
+        f"low={counts.get('low', 0)}"
+    )
     print(f"Review report written to: {artifacts.report_path}")
     print(f"Refactored code written to: {artifacts.refactored_path}")
     return 0
