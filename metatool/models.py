@@ -11,6 +11,7 @@ class Finding:
     severity: str
     line: int | None = None
     category: str = "general"
+    recommendation: str = ""
 
 
 @dataclass(slots=True)
@@ -26,3 +27,4 @@ class ReviewArtifacts:
     refactored_path: Path
     findings: list[Finding] = field(default_factory=list)
     summary: str = ""
+    refactor_notes: list[str] = field(default_factory=list)

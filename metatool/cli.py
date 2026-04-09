@@ -30,6 +30,10 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
+    if not args.source.exists():
+        parser.error(f"Source file not found: {args.source}")
+    if args.source.suffix != ".py":
+        parser.error("Meta-Tool demo currently supports only .py files.")
 
     request = ReviewRequest(
         source_path=args.source,

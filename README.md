@@ -15,3 +15,19 @@ review_code examples/bad_main.py
 ```
 
 The final demo will read Python code, analyze style and risk signals, generate a markdown review report, and write a refactored version of the file.
+
+## Current demo scope
+
+- Python CLI entry: `review_code`
+- deterministic checks for syntax, PEP 8 risks, and common bug patterns
+- markdown review report generation
+- safe, mechanical refactor output
+- optional compatible AI summary provider through environment variables
+
+## Quick start
+
+```bash
+python3 -m metatool.cli examples/bad_main.py
+```
+
+Outputs are written to the `output/` directory by default.
