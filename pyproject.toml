@@ -12,6 +12,10 @@ authors = [{ name = "kusoPEKOraaa" }]
 
 [project.scripts]
 review_code = "metatool.cli:main"
+review_web = "metatool.webapp:main"
 
 [tool.setuptools]
 packages = ["metatool", "metatool.providers"]
+
+[tool.setuptools.package-data]
+metatool = ["web/*"]

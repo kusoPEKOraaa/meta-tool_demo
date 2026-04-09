@@ -1,12 +1,13 @@
 # Meta-Tool Demo
 
-Meta-Tool is a Python command line demo for automated code review and standards-oriented refactoring.
+Meta-Tool is a Python demo for automated code review and standards-oriented refactoring, with both CLI and lightweight web dashboard interfaces.
 
 The project is intentionally small and staged for coursework about software process and quality:
 
 - phase 1: define the architecture and CLI entry
 - phase 2: implement review, report generation, and tests
 - phase 3: polish the demo assets and delivery docs
+- phase 4: add a visual frontend and report analysis dashboard
 
 Target command:
 
@@ -19,6 +20,7 @@ The final demo will read Python code, analyze style and risk signals, generate a
 ## Current demo scope
 
 - Python CLI entry: `review_code`
+- lightweight web dashboard: `review_web`
 - deterministic checks for syntax, PEP 8 risks, and common bug patterns
 - markdown review report generation
 - safe, mechanical refactor output
@@ -35,10 +37,18 @@ review_code examples/bad_main.py
 
 Outputs are written to the `output/` directory by default.
 
+## Web dashboard
+
+```bash
+review_web
+```
+
+Then open `http://127.0.0.1:8123` in your browser to use the visual dashboard for code input, metric cards, report preview, and refactored code analysis.
+
 ## Architecture snapshot
 
 ```text
-CLI -> ReviewPipeline -> Analyzers -> AI Provider -> Report Renderer -> Refactor Writer
+CLI / Web Dashboard -> Review Service -> Analyzers -> AI Provider -> Report Renderer -> Refactor Writer
 ```
 
 ## Staged development process
@@ -46,6 +56,7 @@ CLI -> ReviewPipeline -> Analyzers -> AI Provider -> Report Renderer -> Refactor
 - Phase 1: scaffold the architecture, package, and provider abstraction
 - Phase 2: implement review rules, markdown reports, safe refactors, and tests
 - Phase 3: polish the CLI experience, delivery documents, and demo narrative
+- Phase 4: add a visual frontend and report analysis dashboard
 
 ## Course relevance
 

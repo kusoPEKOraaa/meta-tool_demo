@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta-Tool Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Meta-Tool Visual Console</p>
+          <h1>自动化代码 Review 与规范重构器</h1>
+          <p class="hero-text">
+            用一个轻量 Web 面板，把 Python 代码审查、质量指标、Markdown 报告与自动重构结果放在同一视图里。
+          </p>
+        </div>
+        <div class="hero-badge">
+          <span>软件过程</span>
+          <span>质量保障</span>
+          <span>可视化分析</span>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel input-panel reveal">
+          <div class="panel-heading">
+            <div>
+              <p class="kicker">Workspace</p>
+              <h2>审查输入</h2>
+            </div>
+            <div class="panel-actions">
+              <button id="load-example" class="ghost-button" type="button">载入示例</button>
+              <button id="analyze-button" class="primary-button" type="button">开始审查</button>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              <span>文件名</span>
+              <input id="source-name" type="text" value="bad_main.py" />
+            </label>
+            <label>
+              <span>AI Provider</span>
+              <select id="provider-name">
+                <option value="demo">demo</option>
+                <option value="compatible">compatible</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="code-field">
+            <span>Python 源码</span>
+            <textarea id="source-code" spellcheck="false"></textarea>
+          </label>
+          <p id="status-text" class="status-text">等待输入。可以先点击“载入示例”。</p>
+        </section>
+
+        <section class="metrics-row reveal">
+          <article class="metric-card">
+            <p>发现问题</p>
+            <strong id="metric-total">0</strong>
+            <span>Total Findings</span>
+          </article>
+          <article class="metric-card high">
+            <p>高风险</p>
+            <strong id="metric-high">0</strong>
+            <span>High Severity</span>
+          </article>
+          <article class="metric-card medium">
+            <p>中风险</p>
+            <strong id="metric-medium">0</strong>
+            <span>Medium Severity</span>
+          </article>
+          <article class="metric-card low">
+            <p>低风险</p>
+            <strong id="metric-low">0</strong>
+            <span>Low Severity</span>
+          </article>
+        </section>
+
+        <section class="analysis-grid">
+          <article class="panel summary-panel reveal">
+            <div class="panel-heading">
+              <div>
+                <p class="kicker">AI Summary</p>
+                <h2>审查结论</h2>
+              </div>
+            </div>
+            <p id="summary-text" class="summary-text">这里会显示 AI 审查摘要。</p>
+            <div id="category-bars" class="category-bars"></div>
+          </article>
+
+          <article class="panel findings-panel reveal">
+            <div class="panel-heading">
+              <div>
+                <p class="kicker">Finding Feed</p>
+                <h2>问题分析</h2>
+              </div>
+            </div>
+            <div id="findings-list" class="findings-list"></div>
+          </article>
+        </section>
+
+        <section class="code-grid">
+          <article class="panel code-panel reveal">
+            <div class="panel-heading">
+              <div>
+                <p class="kicker">Refactor Plan</p>
+                <h2>自动重构动作</h2>
+              </div>
+            </div>
+            <ul id="refactor-notes" class="note-list"></ul>
+            <pre id="refactored-code" class="code-block"></pre>
+          </article>
+
+          <article class="panel report-panel reveal">
+            <div class="panel-heading">
+              <div>
+                <p class="kicker">Markdown Report</p>
+                <h2>报告预览</h2>
+              </div>
+            </div>
+            <pre id="report-preview" class="report-block"></pre>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
